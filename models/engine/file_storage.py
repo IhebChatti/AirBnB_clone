@@ -19,7 +19,7 @@ class FileStorage():
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
             for k, v in FileStorage.__objects.items():
                 dct[k] = v.to_dict()
-            json.dump(dct, f)
+            json.dump(dct, f, indent=4)
 
     def reload(self):
         from models.base_model import BaseModel
