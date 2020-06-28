@@ -1,4 +1,4 @@
-![alt hbnb](/home/sebri/Pictures/hbnb.png)
+![alt hbnb](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUWMNL5ANN%2F20200628%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200628T130713Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=44e737334a38b02f33c18ae70a07a58d4746d51e98b8c7998a90a46a1ba23c04)
 This is the first step towards building your first full web application: the AirBnB clone. This first step is very important because you will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
 
 Each task is linked and will help you to:
