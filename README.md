@@ -1,12 +1,4 @@
-```
-    _    _      ____        ____         _                  
-   / \  (_)_ __| __ ) _ __ | __ )    ___| | ___  _ __   ___ 
-  / _ \ | | '__|  _ \| '_ \|  _ \   / __| |/ _ \| '_ \ / _ \
- / ___ \| | |  | |_) | | | | |_) | | (__| | (_) | | | |  __/
-/_/   \_\_|_|  |____/|_| |_|____/   \___|_|\___/|_| |_|\___|
-                                                            
-```
-
+![alt hbnb](/home/sebri/Pictures/hbnb.png)
 This is the first step towards building your first full web application: the AirBnB clone. This first step is very important because you will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
 
 Each task is linked and will help you to:
