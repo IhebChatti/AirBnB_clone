@@ -8,7 +8,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-
+from shlex import split
 
 class HBNBCommand(cmd.Cmd):
     """[HBNBCommand class]
@@ -44,6 +44,20 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
+    def default(self, line):
+        lst = line.replace('(', '.')[:-1].split('.')
+        if lst[1] == "all":
+            return self.do_all(lst[0])
+
+        elif lst[1] == "show":
+            return self.do_show(lst[0] + ' ' + lst[2])
+
+        elif lst[1] == "destroy":
+            return self.do_destroy(lst[0] + ' ' + lst[2])
+
+        elif lst[1] == "count":
+            print(len(storage.all()))
+
     def do_create(self, args):
         """Creates a new instance
         """
@@ -63,11 +77,12 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of an \
             instance based on the class name and ID
         """
+        arg = args.split()
         _all = storage.all()
-        if len(args.split()) == 0:
+        if not arg:
             print("** class name missing **")
 
-        elif args.split()[0] not in HBNBCommand.classes.keys():
+        elif arg[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
 
         elif len(args.split()) == 1:

@@ -24,6 +24,8 @@ class BaseModel():
         self.updated_at = datetime.now()
         if kwargs:
             for key, value in kwargs.items():
+                if key == "__class__":
+                    pass
                 if key in ("created_at", "updated_at"):
                     self.__dict__[key] = datetime.strptime(value, time_format)
                 else:
