@@ -134,3 +134,10 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(bm_json["updated_at"], str)
         self.assertIsInstance(bm_json["created_at"], str)
         self.assertIsInstance(bm_json["id"], str)
+
+    def test_str(self):
+        """
+            Test __str__ method
+        """
+        bm = BaseModel()
+        self.assertEqual(type(bm.__str__()), str)
