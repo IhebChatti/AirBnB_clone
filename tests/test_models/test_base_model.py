@@ -24,9 +24,7 @@ class TestBaseModel(unittest.TestCase):
             Tests id assignment for a new instance
         """
         bm = BaseModel()
-        p1 = "[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-"
-        p2 = "[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}"
-        uuid_pattern = p1 + p2
+        uuid_pattern = '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
         self.assertRegex(bm.id, uuid_pattern)
 
     def test_avoid_id_duplication_for_instance(self):
