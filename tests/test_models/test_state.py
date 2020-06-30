@@ -10,4 +10,17 @@ class TestState(unittest.TestCase):
     """
         TestState class
     """
-    pass
+
+    def test_should_create_state_instance(self):
+        """
+            TestState
+        """
+        state = State()
+        self.assertIsInstance(state, State)
+
+    def test_should_create_state_variable(self):
+        """
+            TestVariable
+        """
+        state = State()
+        self.assertIsInstance(state.name, str)
