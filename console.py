@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import cmd
+from models import storage
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -7,7 +8,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-from models import storage
+from shlex import split
 
 class HBNBCommand(cmd.Cmd):
     """[HBNBCommand class]
@@ -43,28 +44,45 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
+    def default(self, line):
+        lst = line.replace('(', '.')[:-1].split('.')
+        if lst[1] == "all":
+            return self.do_all(lst[0])
+
+        elif lst[1] == "show":
+            return self.do_show(lst[0] + ' ' + lst[2])
+
+        elif lst[1] == "destroy":
+            return self.do_destroy(lst[0] + ' ' + lst[2])
+
+        elif lst[1] == "count":
+            print(len(storage.all()))
+
     def do_create(self, args):
         """Creates a new instance
         """
-        if len(args.split()) != 1:
+        args = args.split()
+        if not args:
             print("** class name missing **")
 
-        elif args.split()[0] not in HBNBCommand.classes.keys():
+        elif args[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
 
         else:
-            b = HBNBCommand.classes[args.split()[0]]()
+            b = HBNBCommand.classes[args[0]]()
             b.save()
             print(b.id)
 
     def do_show(self, args):
-        """Prints the string representation of an instance based on the class name and ID
+        """Prints the string representation of an \
+            instance based on the class name and ID
         """
+        arg = args.split()
         _all = storage.all()
-        if len(args.split()) == 0:
+        if not arg:
             print("** class name missing **")
 
-        elif args.split()[0] not in HBNBCommand.classes.keys():
+        elif arg[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
 
         elif len(args.split()) == 1:
@@ -97,13 +115,21 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, args):
-        """Prints all string representation of all instances based or not on the class name
+        """Prints all string representation of \
+            all instances based or not on the class name
         """
-        if args.split() and args.split()[0] not in HBNBCommand.classes.keys():
+        args = args.split()
+        lst = []
+        if args and args[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
+        if not args:
+            for i in storage.all().values():
+                lst.append(str(i))
         else:
             for i in storage.all().values():
-                print(str(i))
+                if args[0] == i.__class__.__name__:
+                    lst.append(str(i))
+        print(lst)
 
     def do_update(self, args):
         _all = storage.all()
