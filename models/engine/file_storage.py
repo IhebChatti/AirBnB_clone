@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""[Base model Class]
+"""
+    BaseModel Class
 """
 from os import path
 import json
