@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-    BaseModel Class
+"""[FileStorage class]
 """
 from os import path
 import json
@@ -14,6 +13,8 @@ from models.review import Review
 
 
 class FileStorage():
+    """[FileStorage]
+    """
     __file_path = "file.json"
     __objects = {}
 
@@ -25,14 +26,26 @@ class FileStorage():
                "Review": Review}
 
     def all(self):
+        """[all]
+
+        Returns:
+            [dict]: [dictionnary containing objects]
+        """
         return FileStorage.__objects
 
     def new(self, obj):
+        """[new]
+
+        Args:
+            obj ([object]): [object to be created]
+        """
         _id = obj.id
         key = str(obj.__class__.__name__) + "." + _id
         FileStorage.__objects[key] = obj
 
     def save(self):
+        """[save]
+        """
         dct = {}
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
             for k, v in FileStorage.__objects.items():
@@ -40,7 +53,8 @@ class FileStorage():
             json.dump(dct, f, indent=4)
 
     def reload(self):
-
+        """[reload]
+        """
         if path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r") as f:
                 obj = json.load(f)
