@@ -13,7 +13,7 @@ class TestBaseDict(unittest.TestCase):
         """
             Test instance creation with kwargs
         """
-        kwargs = {"name":"Betty"}
+        kwargs = {"name": "Betty"}
         bm = BaseModel(**kwargs)
         self.assertEqual(bm.name, "Betty")
 
@@ -21,7 +21,7 @@ class TestBaseDict(unittest.TestCase):
         """
             Test instance
         """
-        kwargs = {"name":"Betty", "number": 89}
+        kwargs = {"name": "Betty", "number": 89}
         bm = BaseModel(**kwargs)
         self.assertEqual(bm.name, "Betty")
         self.assertEqual(bm.number, 89)

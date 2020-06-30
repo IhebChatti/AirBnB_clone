@@ -24,7 +24,7 @@ class TestBaseModel(unittest.TestCase):
             Tests id assignment for a new instance
         """
         bm = BaseModel()
-        uuid_pattern='[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
+        uuid_pattern = '[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}'
         self.assertRegex(bm.id, uuid_pattern)
 
     def test_avoid_id_duplication_for_instance(self):
@@ -49,7 +49,7 @@ class TestBaseModel(unittest.TestCase):
         """
         bm = BaseModel()
         c_at = bm.created_at.__str__()
-        c_at_pattern='\d{4}\-\d{2}\-\d{2}\ \d{2}\:\d{2}\:\d{2}\.\d{6}'
+        c_at_pattern = '\d{4}\-\d{2}\-\d{2}\ \d{2}\:\d{2}\:\d{2}\.\d{6}'
         self.assertRegex(c_at, c_at_pattern)
 
     def test_assignment_of_updated_at_attribute(self):
@@ -66,7 +66,7 @@ class TestBaseModel(unittest.TestCase):
         """
         bm = BaseModel()
         u_at = bm.updated_at.__str__()
-        u_at_pattern='\d{4}\-\d{2}\-\d{2}\ \d{2}\:\d{2}\:\d{2}\.\d{6}'
+        u_at_pattern = '\d{4}\-\d{2}\-\d{2}\ \d{2}\:\d{2}\:\d{2}\.\d{6}'
         self.assertRegex(u_at, u_at_pattern)
 
     def test_str_magic_function_with_empty_attributes(self):
