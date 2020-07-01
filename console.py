@@ -48,21 +48,30 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def default(self, line):
+        """[default method]
+
+        Args:
+            line ([str]): [user's input]
+
+        Returns:
+            [function]: [returns the function needed or error]
+        """
         lst = line.replace('(', '.')[:-1].split('.')
-        if lst[1] == "all":
-            return self.do_all(lst[0])
+        if len(lst) > 1:
+            if lst[1] == "all":
+                return self.do_all(lst[0])
 
-        elif lst[1] == "show":
-            return self.do_show(lst[0] + ' ' + lst[2])
+            elif lst[1] == "show":
+                return self.do_show(lst[0] + ' ' + lst[2])
 
-        elif lst[1] == "destroy":
-            return self.do_destroy(lst[0] + ' ' + lst[2])
+            elif lst[1] == "destroy":
+                return self.do_destroy(lst[0] + ' ' + lst[2])
 
-        elif lst[1] == "update":
-            return self.do_update(lst[0] + ' ' + lst[2])
+            elif lst[1] == "update":
+                return self.do_update(lst[0] + ' ' + lst[2])
 
-        elif lst[1] == "count":
-            print(len(storage.all()))
+            elif lst[1] == "count":
+                print(len(storage.all()))
 
     def do_create(self, args):
         """Creates a new instance
@@ -128,14 +137,15 @@ class HBNBCommand(cmd.Cmd):
         lst = []
         if args and args[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
-        if not args:
+        elif not args:
             for i in storage.all().values():
                 lst.append(str(i))
         else:
             for i in storage.all().values():
                 if args[0] == i.__class__.__name__:
                     lst.append(str(i))
-        print(lst)
+        if len(lst):
+            print(lst)
 
     def do_update(self, args):
         _all = storage.all()

@@ -214,3 +214,9 @@ class TestBaseModel(unittest.TestCase):
         bm = BaseModel(**kwargs)
         self.assertEqual(str(bm.__class__),
                          "<class 'models.base_model.BaseModel'>")
+
+    def test_id_type(self):
+        """[test type of id]
+        """
+        bm =  BaseModel()
+        self.assertIsInstance(bm.id, str)
