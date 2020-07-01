@@ -155,6 +155,9 @@ class HBNBCommand(cmd.Cmd):
             print(lst)
 
     def do_update(self, args):
+        """
+        Update command for resetting user attributes
+        """
         _all = storage.all()
         key = "{}.{}".format(args.split()[0], args.split()[1])
         if len(args.split()) == 0:
