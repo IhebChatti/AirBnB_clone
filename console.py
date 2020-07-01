@@ -73,6 +73,9 @@ class HBNBCommand(cmd.Cmd):
 
             elif lst[1] == "count":
                 print(len(storage.all()))
+        else:
+            print("*** Unknown syntax: {}".format(line))
+            return False
 
     def do_create(self, args):
         """Creates a new instance
