@@ -57,7 +57,8 @@ class HBNBCommand(cmd.Cmd):
         Returns:
             [function]: [returns the function needed or error]
         """
-        lst = line.replace('(', '.')[:-1].split('.')
+        lst = (line.replace('(', '.').replace(',', '.').replace(' ', '')
+               [:-1].split('.'))
         if len(lst) > 1:
             if lst[1] == "all":
                 return self.do_all(lst[0])
@@ -69,10 +70,12 @@ class HBNBCommand(cmd.Cmd):
                 return self.do_destroy(lst[0] + ' ' + lst[2])
 
             elif lst[1] == "update":
-                return self.do_update(lst[0] + ' ' + lst[2])
+                return (self.do_update(lst[0] + ' ' + lst[2] +
+                                       ' ' + lst[3] + ' ' + lst[4]))
 
             elif lst[1] == "count":
                 print(len(storage.all()))
+
         else:
             print("*** Unknown syntax: {}".format(line))
             return False
@@ -172,7 +175,8 @@ class HBNBCommand(cmd.Cmd):
         elif len(args.split()) == 3:
             print("** value missing **")
         else:
-            setattr(_all[key], args.split()[2], re.search(r'\w+', args.split()[3]).group())
+            setattr(_all[key], args.split()[2],
+                    re.search(r'\w+', args.split()[3]).group())
             storage.save()
 
 if __name__ == "__main__":
