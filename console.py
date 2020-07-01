@@ -81,7 +81,7 @@ class HBNBCommand(cmd.Cmd):
             return False
 
     def do_create(self, args):
-        """Creates a new instance
+        """Create command a new instance
         """
         args = args.split()
         if not args:
@@ -96,8 +96,7 @@ class HBNBCommand(cmd.Cmd):
             print(b.id)
 
     def do_show(self, args):
-        """Prints the string representation of an \
-            instance based on the class name and ID
+        """Show command print the dict format of instance
         """
         arg = args.split()
         _all = storage.all()
