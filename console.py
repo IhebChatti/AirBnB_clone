@@ -116,13 +116,14 @@ class HBNBCommand(cmd.Cmd):
             print(_all["{}.{}".format(args.split()[0], args.split()[1])])
 
     def do_destroy(self, args):
-        """Destroy By ID
+        """Destroy command By ID
         """
+        arg = args.split()
         _all = storage.all()
-        if len(args.split()) == 0:
+        if not arg:
             print("** class name missing **")
 
-        elif args.split()[0] not in HBNBCommand.classes.keys():
+        elif arg[0] not in HBNBCommand.classes.keys():
             print("** class doesn't exist **")
 
         elif len(args.split()) == 1:
@@ -136,7 +137,7 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, args):
-        """Prints all string representation of \
+        """All command Prints all string representation of \
             all instances based or not on the class name
         """
         args = args.split()
@@ -154,8 +155,7 @@ class HBNBCommand(cmd.Cmd):
             print(lst)
 
     def do_update(self, args):
-        """
-        Update command for resetting user attributes
+        """Update command for resetting user attributes
         """
         _all = storage.all()
         key = "{}.{}".format(args.split()[0], args.split()[1])
