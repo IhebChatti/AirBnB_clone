@@ -58,6 +58,9 @@ class HBNBCommand(cmd.Cmd):
         elif lst[1] == "destroy":
             return self.do_destroy(lst[0] + ' ' + lst[2])
 
+        elif lst[1] == "update":
+            return self.do_update(lst[0] + ' ' + lst[2])
+
         elif lst[1] == "count":
             print(len(storage.all()))
 
