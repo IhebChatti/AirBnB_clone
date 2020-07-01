@@ -2,6 +2,7 @@
 """[HBNBCommand class]
 """
 import cmd
+import re
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
@@ -168,7 +169,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args.split()) == 3:
             print("** value missing **")
         else:
-            setattr(_all[key], args.split()[2], args.split()[3])
+            setattr(_all[key], args.split()[2], re.search(r'\w+', args.split()[3]).group())
             storage.save()
 
 if __name__ == "__main__":
