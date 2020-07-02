@@ -218,5 +218,5 @@ class TestBaseModel(unittest.TestCase):
     def test_id_type(self):
         """[test type of id]
         """
-        bm =  BaseModel()
+        bm = BaseModel()
         self.assertIsInstance(bm.id, str)

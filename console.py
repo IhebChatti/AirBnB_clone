@@ -158,7 +158,6 @@ class HBNBCommand(cmd.Cmd):
         """Update command for resetting user attributes
         """
         _all = storage.all()
-        key = "{}.{}".format(args.split()[0], args.split()[1])
         if len(args.split()) == 0:
             print("** class name missing **")
 
@@ -177,6 +176,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(args.split()) == 3:
             print("** value missing **")
         else:
+            key = "{}.{}".format(args.split()[0], args.split()[1])
             setattr(_all[key], args.split()[2],
                     re.search(r'\w+', args.split()[3]).group())
             storage.save()
