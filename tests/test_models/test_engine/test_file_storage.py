@@ -3,6 +3,7 @@
     TestFileStorage module
 """
 import unittest
+import os
 from models import storage
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
@@ -69,3 +70,15 @@ class TestFileStorage(unittest.TestCase):
         storage.new(obj)
         v = "BaseModel.{}".format(obj.id)
         self.assertIn(v, storage.all().keys())
+
+    def test_save_method(self):
+        """
+        Test save
+        """
+        storage.save()
+        size1 = os.path.getsize(FileStorage._FileStorage__file_path)
+        obj = BaseModel()
+        storage.new(obj)
+        storage.save()
+        size2 = os.path.getsize(FileStorage._FileStorage__file_path)
+        self.assertNotEqual(size1, size2)
