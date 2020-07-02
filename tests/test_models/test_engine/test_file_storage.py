@@ -33,12 +33,26 @@ class TestFileStorage(unittest.TestCase):
         with self.assertRaises(AttributeError):
             f = FileStorage.__file_path
 
+    def test_objects_for_private(self):
+        """
+        Test
+        """
+        f = FileStorage._FileStorage__objects
+        self.assertIsInstance(f, dict)
+
     def test_objects_instance(self):
         """
         Test raise error
         """
         with self.assertRaises(AttributeError):
             f = FileStorage.__objects
+
+    def test_file_path_for_private(self):
+        """
+        Test
+        """
+        f = FileStorage._FileStorage__file_path
+        self.assertIsInstance(f, str)
 
     def test_all_method(self):
         """
@@ -51,8 +65,7 @@ class TestFileStorage(unittest.TestCase):
         """
         Test new method
         """
-        l = storage.all()
         obj = BaseModel()
         storage.new(obj)
-        ll = storage.all()
-        self.assertEqual(len(l), len(ll))
+        v = "BaseModel.{}".format(obj.id)
+        self.assertIn(v, storage.all().keys())
