@@ -82,3 +82,22 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         size2 = os.path.getsize(FileStorage._FileStorage__file_path)
         self.assertNotEqual(size1, size2)
+
+    def test_reload_method(self):
+        """
+        Test reload
+        """
+        size1 = len(FileStorage._FileStorage__objects)
+        storage.reload()
+        size2 = len(FileStorage._FileStorage__objects)
+        self.assertNotEqual(size1, size2)
+
+#    def test_save_from_save_model(self):
+#        """
+#        Test BaseModel.save()
+#        """
+#        b = BaseModel()
+#        u_at = b.updated_at().isoformat()
+#        b.save()
+#        uu_at = b.updated_at().isoformat()
+#        self.assertNotEqual(u_at, uu_at)
