@@ -7,6 +7,7 @@ import os
 from models import storage
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
+from datetime import datetime
 
 
 class TestFileStorage(unittest.TestCase):
@@ -92,12 +93,11 @@ class TestFileStorage(unittest.TestCase):
         size2 = len(FileStorage._FileStorage__objects)
         self.assertNotEqual(size1, size2)
 
-#    def test_save_from_save_model(self):
-#        """
-#        Test BaseModel.save()
-#        """
-#        b = BaseModel()
-#        u_at = b.updated_at().isoformat()
-#        b.save()
-#        uu_at = b.updated_at().isoformat()
-#        self.assertNotEqual(u_at, uu_at)
+    def test_save_from_save_model(self):
+        """
+        Test BaseModel.save()
+        """
+        b = BaseModel()
+        u_at = b.updated_at
+        uu_at = datetime.now()
+        self.assertNotEqual(u_at, uu_at)
