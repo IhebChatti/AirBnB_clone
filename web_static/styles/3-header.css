@@ -1,0 +1,7 @@
+header {
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    background: url(../images/icon.png) no-repeat 20px center;
+    border-bottom: 1px #CCCCCC solid;
+}
