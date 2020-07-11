@@ -7,5 +7,5 @@ footer {
     justify-content: center;
     position: absolute;
     border-top: 1px #CCCCCC solid;
-    bottom: 0px;
+    flex-direction: column;
 }
